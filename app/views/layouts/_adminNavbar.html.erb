@@ -1,0 +1,36 @@
+<nav class="flex">
+    <div class="w-64 p-4 h-screen bg-gray-600 aticky top-0">
+        <div class="flex items-center space-x-2 px-4">
+            <%= icon('fa-solid', 'font-awesome', class: 'text-white') %>
+            <h1 class="text-md py-2 text-gray-50 font-bold hidden md:block">
+                Ecomm Admin
+            </h1>
+        </div>
+        <ul class="flex flex-col my-1.5">
+                <li>
+                <%= link_to admin_path, class: "block px-4 py-2 hover:rounded hover:bg-gray-700" do %>
+                    <%= icon('fa-solid', 'gauge-high', class: "text-white mr-2") %>
+                    <span class="hidden md:inline-block text-white">Dashboard</span>
+                <% end %>
+            </li>
+            <li>
+                <%= link_to admin_path, class: "block px-4 py-2 hover:rounded hover:bg-gray-700" do %>
+                    <%= icon('fa-solid', 'cart-shopping', class: "text-white mr-2") %>
+                    <span class="hidden md:inline-block text-white">Products</span>
+                <% end %>
+            </li>
+            <li>
+                <%= link_to admin_categories_path, class: "block px-4 py-2 hover:rounded hover:bg-gray-700" do %>
+                    <%= icon('fa-solid', 'list', class: "text-white mr-2") %>
+                    <span class="hidden md:inline-block text-white">Categories</span>
+                <% end %>
+            </li>
+            <li>
+                <%= link_to admin_path, class: "block px-4 py-2 hover:rounded hover:bg-gray-700" do %>
+                    <%= icon('fa-solid', 'truck-fast', class: "text-white mr-2") %>
+                    <span class="hidden md:inline-block text-white">Orders</span>
+                <% end %>
+            </li>
+        </ul>
+    </div>
+</nav>
