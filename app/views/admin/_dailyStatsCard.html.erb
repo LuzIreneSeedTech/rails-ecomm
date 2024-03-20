@@ -1,0 +1,16 @@
+<div class="max-w-sm rounded overflow-hidden shadow-xl bg-gradient-to-r from-gray-400 to-gray-300">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2 text-white">
+      <%= cardName %>
+    </div>
+    <p class="text-white text-base">
+      <% if cardName === "Revenue" || cardName === "Average Sale" %>
+        $<%= quickStats ? (quickStats/100.0).to_s : "0" %>
+      <% elsif cardName === "Total Sale" %>
+        <%= quickStats ? quickStats.to_s : "0" %>
+      <% else %>
+        <%= quickStats.to_i %>
+      <% end %>
+    </p>
+  </div>
+</div>
