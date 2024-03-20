@@ -1,1 +1,59 @@
 <h1>Admin Home</h1>
+<div class="flex justify-between flex-wrap mt-8 w-full items-center max-w-4xl">
+  <h2 class="text-2xl text-gray-800 font-medium mb-4">
+    Daily Stats
+  </h2>
+  <div class="flex gap-10 flex-col md:flex-row justify-between w-full">
+    <%# REVENUE %>
+    <%= render 'admin/dailyStatsCard', quickStats: @quick_stats[:revenue], cardName: "Revenue" %>
+    <%# TOTAL SALE %>
+    <%= render 'admin/dailyStatsCard', quickStats: @quick_stats[:sales], cardName: "Total Sale" %>
+    <%# AVERAGE SALE %>
+    <%= render 'admin/dailyStatsCard', quickStats: @quick_stats[:avg_sale], cardName: "Average Sale" %>
+    <%# ITEM PER SALE %>
+    <%= render 'admin/dailyStatsCard', quickStats: @quick_stats[:per_sale], cardName: "Item/Sale" %>
+  </div>
+  <%# REVENUE CHART %>
+  <div class="my-8 w-full">
+    <h2 class="text-2xl text-gray-800 font-medium mb-4">Revenue</h2>
+    <div class="w-full" data-controller="dashboard" data-dashboard-revenue-value="<%= @revenue_by_day.to_json %>">
+      <canvas id="revenueChart"></canvas>
+    </div>
+  </div>
+  <%# UNFULFILLED ORDERS TABLE %>
+  <div class="felx flex-col w-full">
+    <h2 class="text-2xl text-gray-800 mb-4 font-medium">
+      Recent Unfulfilled Orders
+    </h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-gray-100" style="border-collapse: separate; border-spacing: 0;">
+        <thead>
+          <tr class="text-gray-800">
+            <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100">Order ID</th>
+            <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100">Customer</th>
+            <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100">Date</th>
+            <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100">Amount</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <% @orders.each do |order| %>
+            <tr>
+              <td class="px-6 py-4 border-b border-gray-200">
+                <%= link_to order.id, admin_order_path(order), class: "underline" %>
+              </td>
+              <td class="px-6 py-4 border-b border-gray-200">
+                <%= order.customer_email %>
+              </td>
+              <td class="px-6 py-4 border-b border-gray-200">
+                <%= order.created_at.strftime("%B %d, %Y %H:%M") %>
+              </td>
+              <td class="px-6 py-4 border-b border-gray-200">
+                <%= order.total %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
