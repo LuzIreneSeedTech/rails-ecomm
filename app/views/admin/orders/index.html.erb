@@ -8,10 +8,10 @@
   </div>
   <div class="flex flex-col w-full">
     <h1>Unfulfilled Orders</h1>
-    <%= render 'admin/orders/table', orders: @not_fulfilled_orders %>
+    <%= render 'admin/orders/table', orders: @not_fulfilled_orders, ordersPagy: @not_fulfilled_pagy %>
   </div>
   <div class="flex flex-col w-full">
     <h1>Fulfilled Orders</h1>
-    <%= render 'admin/orders/table', orders: @fulfilled_orders %>
+    <%= render 'admin/orders/table', orders: @fulfilled_orders, ordersPagy: @fulfilled_pagy %>
   </div>
 </div>
